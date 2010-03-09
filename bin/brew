@@ -233,7 +233,7 @@ begin
       if ARGV.named.empty?
         if ARGV.include? "--all"
           require 'formula'
-          Formulary.names.each do |name|
+          Formula.names.each do |name|
             info name
             puts '---'
           end
