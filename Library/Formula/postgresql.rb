@@ -12,8 +12,6 @@ class Postgresql <Formula
   depends_on 'libxml2' if MACOS_VERSION < 10.6 #system libxml is too old
   depends_on 'ossp-uuid' if ARGV.include? '--ossp-uuid'
 
-  aka 'postgres'
-
   def options
     [
       ['--no-python', 'Build without Python support.'],
