@@ -8,9 +8,9 @@ class Php <Formula
 # depends_on 'cmake'
 
   def install
-    system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}", "--with-mysql"
+    system "./configure", "--disable-debug", "--disable-dependency-tracking", "--prefix=#{prefix}", "--with-mysql", "--with-mysqli", "--with-pdo-mysql", "--with-apxs2=/usr/sbin/apxs", "--enable-cli", "--with-curl=/usr"
 #   system "cmake . #{std_cmake_parameters}"
     system "make"
-    system "make install"
+    system "sudo make install"
   end
 end
