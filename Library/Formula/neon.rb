@@ -5,11 +5,17 @@ class Neon <Formula
   md5 'ba1015b59c112d44d7797b62fe7bee51'
   homepage 'http://www.webdav.org/neon/'
 
-  def keg_only?
-    :provided_by_osx
+  depends_on 'pkg-config' => :build
+
+  keg_only :provided_by_osx
+
+  def options
+    [['--universal', 'Builds a universal binary.']]
   end
 
   def install
+    ENV.universal_binary if ARGV.include? '--universal'
+
     system "./configure", "--prefix=#{prefix}",
                           "--disable-debug",
                           "--enable-shared",

@@ -1,37 +1,34 @@
 require 'formula'
 
 class Node <Formula
-  url 'http://nodejs.org/dist/node-v0.1.93.tar.gz'
-  head 'git://github.com/ry/node.git'
+  url 'http://nodejs.org/dist/node-v0.4.2.tar.gz'
+  head 'git://github.com/joyent/node.git'
   homepage 'http://nodejs.org/'
-  md5 'e922a05dab2543f14cbdabb23905a04d'
+  md5 '9e9e791e125f6a601ebc663dc99c72a8'
 
-  aka 'node.js'
-  
-  depends_on 'gnutls' => :recommended
-  
-  def skip_clean? path
-    # TODO: at some point someone should tweak this so it only skips clean
-    # for the bits that break the build otherwise
-    true
+  # Stripping breaks dynamic loading
+  skip_clean :all
+
+  def options
+    [["--debug", "Build with debugger hooks."]]
   end
 
   def install
-    ENV.gcc_4_2
-    inreplace %w{wscript configure} do |s|
+    fails_with_llvm
+
+    inreplace 'wscript' do |s|
       s.gsub! '/usr/local', HOMEBREW_PREFIX
       s.gsub! '/opt/local/lib', '/usr/lib'
     end
-    system "./configure", "--prefix=#{prefix}"
+
+    args = ["--prefix=#{prefix}"]
+    args << "--debug" if ARGV.include? '--debug'
+
+    system "./configure", *args
     system "make install"
   end
-  
-  def caveats; <<-EOS.undent
-    If you:
-      brew install rlwrap
-    then you can:
-      rlwrap node-repl
-    for a nicer command-line interface.
-    EOS
+
+  def caveats
+    "Please add #{HOMEBREW_PREFIX}/lib/node to your NODE_PATH environment variable to have node libraries picked up."
   end
 end

@@ -1,8 +1,8 @@
 require 'formula'
 
 class Asciidoc <Formula
-  url 'http://downloads.sourceforge.net/project/asciidoc/asciidoc/8.5.1/asciidoc-8.5.1.tar.gz'
-  md5 '412fb0c86c3dcb4cc159ef63bd274c90'
+  url 'http://downloads.sourceforge.net/project/asciidoc/asciidoc/8.6.3/asciidoc-8.6.3.tar.gz'
+  md5 '1ef39786ee1b4c8a788584e73db2c55a'
   homepage 'http://www.methods.co.nz/asciidoc'
 
   def install

@@ -2,10 +2,10 @@ require 'formula'
 
 class Libmatroska <Formula
   # This is the official source, but it's frequently down. Use the mktoolnix mirror instead.
-  # url 'http://dl.matroska.org/downloads/libmatroska/libmatroska-0.8.1.tar.bz2'
-  url 'http://www.bunkus.org/videotools/mkvtoolnix/sources/libmatroska-0.8.1.tar.bz2'
+  # url 'http://dl.matroska.org/downloads/libmatroska/libmatroska-1.1.0.tar.bz2'
+  url 'http://www.bunkus.org/videotools/mkvtoolnix/sources/libmatroska-1.1.0.tar.bz2'
   homepage 'http://www.matroska.org/'
-  md5 '2ceb8235e5189fe4e79ec25ebd97b56b'
+  md5 '21e5ee3e2573f0ae99db195348bdfb98'
 
   depends_on 'libebml'
 
